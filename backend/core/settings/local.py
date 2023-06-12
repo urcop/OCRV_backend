@@ -21,3 +21,24 @@ ALL_DB = all([
 
 if ALL_DB:
     DATABASES['default'] = dj_database_url.parse(f'postgres://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}')
+
+THIRD_PARTY = [
+    'rest_framework',
+    'ckeditor',
+]
+
+LOCAL_APPS = [
+    'api',
+    'news',
+    'questions',
+]
+
+
+INSTALLED_APPS += THIRD_PARTY + LOCAL_APPS
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'core.renderers.UTF8CharsetJSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ),
+}

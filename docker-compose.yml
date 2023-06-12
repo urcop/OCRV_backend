@@ -10,7 +10,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     env_file:
-      - .env
+      - backend/.env
     volumes:
       - staticfiles:/app/staticfiles/
       - ./backend:/app/backend/
@@ -20,21 +20,9 @@ services:
   db:
     image: postgres:latest
     env_file:
-      - .env
+      - backend/.env
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     restart: always
     ports:
       - ${POSTGRES_PORT}:5432
-  nginx:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    volumes:
-      - ./nginx/:/etc/nginx/conf.d/
-      - staticfiles:/app/staticfiles/
-      - ./frontend/:/app/frontend/
-    depends_on:
-      - backend
-    ports:
-      - "80:80"

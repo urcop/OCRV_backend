@@ -3,7 +3,7 @@ from os import environ
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-j^9pc@nrcb^ims=yq(5$#9b9pxkee_of)fz&9y2-ludgo((^@^'
+SECRET_KEY = environ.get('DJANGO_SECRET_KEY')
 
 DEBUG = True
 
