@@ -5,7 +5,7 @@ from django.db import models
 
 
 class News(models.Model):
-    id = models.UUIDField(default=uuid4(), primary_key=True)
+    id = models.UUIDField(default=uuid4, primary_key=True)
     title = models.CharField(max_length=255, verbose_name='Название')
     description = RichTextField(verbose_name='Описание')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Создано')
