@@ -17,6 +17,8 @@ services:
     command: sh -c "sh ./scripts/entrypoint.sh"
     depends_on:
       - db
+    ports:
+      - "8000:8000"
   db:
     image: postgres:latest
     env_file:
@@ -26,3 +28,13 @@ services:
     restart: always
     ports:
       - ${POSTGRES_PORT}:5432
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    volumes:
+      - staticfiles:/app/staticfiles/
