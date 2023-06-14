@@ -4,7 +4,6 @@ import dj_database_url
 ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = ['http://localhost']
-CORS_ALLOW_ALL_ORIGINS = True
 
 DB_USER = environ.get('POSTGRES_USER')
 DB_NAME = environ.get('POSTGRES_DB')
